@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: preventia-mvp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 2 app:app
+    healthCheckPath: /health
+    envVars:
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"

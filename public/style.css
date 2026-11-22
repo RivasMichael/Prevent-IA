@@ -1,0 +1,61 @@
+*{box-sizing:border-box}
+:root{color-scheme:dark;--bg:#101b20;--panel:#17262d;--line:#31464e;--text:#eff6f5;--muted:#acc0c4;--mint:#a6edce;--ink:#10251d}
+body{margin:0;background:var(--bg);color:var(--text);font:1rem/1.5 "Segoe UI",system-ui,sans-serif}
+.container{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+.topbar{border-bottom:1px solid var(--line)}
+.nav,.footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem}
+.nav a{color:var(--text);text-decoration:none}
+.nav a:hover{text-decoration:underline}
+.brand{display:flex;align-items:center;gap:.16rem;font-weight:750;font-size:1.3rem}
+.brand span{color:var(--mint)}
+.brand .mark{margin-right:.45rem;border:1px solid var(--mint);border-radius:7px;padding:0 .35rem}
+.intro{padding:3rem 0 2.4rem;max-width:650px}
+.eyebrow{font-size:.875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--mint);font-weight:650}
+h1,h2,h3,p{margin:0}
+h1{font-size:clamp(2.5rem,7vw,4.65rem);line-height:1.04;letter-spacing:-.045em;margin:.65rem 0 1rem}
+h2{font-size:1.3rem;letter-spacing:-.02em}
+h3{font-size:1.55rem;margin:.2rem 0 1rem}
+p{color:var(--muted)}
+.workspace{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:1rem;align-items:start}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.stage,.result{padding:1rem}
+.card-head,.tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.card-head{margin-bottom:1rem}
+.image-area{background:#0a1115;border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:130px;display:grid;place-items:center}
+canvas{display:block;width:auto;height:auto;max-width:100%;max-height:480px;touch-action:none;cursor:crosshair}
+.tools{margin-top:1rem;justify-content:flex-start}
+.file-note,.note,.status{font-size:.875rem}
+.file-note{color:var(--muted)}
+.button,.quiet{font:inherit;font-weight:650;border:1px solid transparent;border-radius:8px;cursor:pointer;padding:.55rem .8rem;display:inline-block}
+.secondary,.quiet{background:transparent;color:var(--text);border-color:var(--line)}
+.secondary:hover,.quiet:hover{border-color:var(--mint)}
+.primary{width:100%;background:var(--mint);color:var(--ink);margin-top:1rem}
+button:disabled{cursor:default;opacity:.5}
+:focus-visible,.visually-hidden:focus-visible+*{outline:2px solid var(--mint);outline-offset:3px}
+.tools:focus-within .secondary{border-color:var(--mint)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.result>p{margin-top:.5rem}
+details{margin-top:1rem}
+summary{cursor:pointer;font-weight:650}
+.coordinates{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.65rem}
+.coordinates label{color:var(--muted);font-size:.875rem}
+.coordinates input{display:block;width:100%;padding:.4rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--text);font:inherit}
+#output{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.probability{display:grid;grid-template-columns:1fr auto;gap:.15rem .5rem;margin-bottom:.65rem;font-size:.875rem}
+progress{grid-column:1/-1;width:100%;height:.6rem;accent-color:var(--mint)}
+.result .note{margin-top:1rem;border-top:1px solid var(--line);padding-top:.75rem}
+.evaluation{margin:3rem 0}
+.evaluation h2{font-size:clamp(1.5rem,4vw,2.3rem);margin:.3rem 0}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+.metric,.matrix{padding:1rem}
+.metric strong{display:block;font-size:1.6rem;line-height:1.2;color:var(--mint)}
+.metric span{font-size:.875rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin-top:1rem;text-align:center}
+th,td{padding:.45rem .25rem;border-bottom:1px solid var(--line)}
+caption{text-align:left;color:var(--muted)}
+.footer{color:var(--muted);border-top:1px solid var(--line);font-size:.875rem}
+@media(max-width:760px){.container{width:calc(100% - 28px)}.workspace{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{padding:2.4rem 0 1.6rem}}
+
+.sample-picker{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;color:var(--muted);font-size:.875rem}
+.sample-picker select{max-width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit;padding:.5rem}
+.other-title{font-size:.875rem;margin-bottom:.5rem}

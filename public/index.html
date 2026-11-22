@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b20">
+  <title>PreventIA | Daños en pavimento</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><div class="container nav"><a class="brand" href="/" aria-label="PreventIA, inicio"><span class="mark" aria-hidden="true">▰</span> Prevent<span>IA</span></a><a href="#evaluacion">Evaluación del modelo</a></div></header>
+  <main class="container">
+    <section class="intro" aria-labelledby="titulo">
+      <p class="eyebrow">Visión por computadora · Pavimento</p>
+      <h1 id="titulo">Clasifica daños<br>en el pavimento.</h1>
+      <p>Abre una fotografía, marca una zona dañada y consulta el tipo de daño que predice el perceptrón multicapa.</p>
+    </section>
+    <div class="workspace">
+      <section class="card stage" aria-labelledby="foto-titulo">
+        <div class="card-head"><div><h2 id="foto-titulo">Fotografía</h2><p id="photo-label">Ejemplo de validación</p></div><label class="sample-picker">Ejemplos <select id="sample"><option value="D00">Grieta longitudinal</option><option value="D10">Grieta transversal</option><option value="D20">Grieta tipo cocodrilo</option><option value="D40">Bache</option></select></label></div>
+        <div class="image-area"><canvas id="photo" aria-label="Fotografía. Arrastra para marcar un rectángulo. También puedes escribir las coordenadas."></canvas></div>
+        <div class="tools"><label class="button secondary" for="upload">Elegir foto</label><input class="visually-hidden" id="upload" type="file" accept="image/jpeg,image/png,image/webp"><button class="quiet" id="clear" type="button" disabled>Borrar selección</button><span class="file-note">JPG, PNG o WebP · hasta 8 MB</span></div>
+      </section>
+      <section class="card result" aria-labelledby="resultado-titulo">
+        <h2 id="resultado-titulo">Análisis de la región</h2>
+        <p>Arrastra un rectángulo sobre el daño que quieras clasificar.</p>
+        <details><summary>Introducir coordenadas</summary><div class="coordinates">
+          <label>Izquierda <input type="number" min="0" step="1" id="x1"></label>
+          <label>Arriba <input type="number" min="0" step="1" id="y1"></label>
+          <label>Derecha <input type="number" min="0" step="1" id="x2"></label>
+          <label>Abajo <input type="number" min="0" step="1" id="y2"></label>
+        </div></details>
+        <button class="button primary" id="classify" type="button" disabled>Clasificar región</button>
+        <p id="status" role="status" class="status"></p>
+        <div id="output" hidden>
+          <p class="eyebrow">Predicción</p>
+          <h3 id="prediction"></h3>
+          <p class="other-title">Otras clases</p>
+          <div id="probabilities"></div>
+        </div>
+        <p class="note">La MLP siempre elige entre cuatro tipos de daño, incluso si marcas pavimento sano. Marca un daño visible.</p>
+      </section>
+    </div>
+    <section id="evaluacion" class="evaluation" aria-labelledby="eval-title">
+      <p class="eyebrow">Evaluación · RDD2022 Estados Unidos</p>
+      <h2 id="eval-title">Resultados en validación</h2>
+      <p id="validation-note"></p>
+      <div class="metrics" id="metrics"></div>
+      <details class="card matrix"><summary>Matriz de confusión</summary><div id="matrix"></div></details>
+    </section>
+  </main>
+  <footer class="container footer"><span>PreventIA · Grupo 5</span><span>Prototipo académico</span></footer>
+</body>
+</html>
