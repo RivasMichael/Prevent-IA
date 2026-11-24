@@ -1,3 +1,14 @@
 __pycache__/
 .venv/
 *.pyc
+
+# Dataset completo y archivos temporales de los notebooks
+**/United_States/
+**/.ipynb_checkpoints/
+*.zip
+*.tar.gz
+*.pkl
+*.joblib
+.env
+.env.*
+!.env.example
